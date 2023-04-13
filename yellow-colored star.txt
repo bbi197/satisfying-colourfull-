@@ -1,0 +1,31 @@
+import turtle # Importing turtle module
+
+# Create a turtle object and set the background color
+a = turtle.Turtle()
+a.getscreen().bgcolor("black")
+
+# Move turtle to starting point and set its color and speed
+a.penup()
+a.goto(-200, 100)
+a.pendown()
+a.color("yellow")
+a.speed(25)
+
+# Define a recursive function to draw the star
+def star(turtle, size):
+    if size <= 10: # Base case of recursion, when size is small
+        return
+    else: # Recursive case, when size is large
+        turtle.begin_fill() # Start filling the star shape
+        for i in range (5): # Draw 5 points of the star
+            turtle.pensize(2) # Set the pen size
+            turtle.forward(size) # Move the turtle forward
+            star(turtle, size/3) # Recursively call the same function with smaller size
+            turtle.left(216) # Turn the turtle left by 216 degrees
+        turtle.end_fill() # End the fill of the star shape
+
+# Call the recursive function to draw the star
+star(a, 360)
+
+# End the turtle program
+turtle.done()
